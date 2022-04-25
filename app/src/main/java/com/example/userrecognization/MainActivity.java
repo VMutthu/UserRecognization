@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
@@ -36,12 +37,15 @@ import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 
-public class MainActivity extends Activity implements OnClickListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private boolean mIsFailed = false;
     String name = "muthu";
     private Preview mPreview;
     private ProcessImageAndDrawResults mDraw;
+    private String ok ="ok";
     private final String database = "Memory70.dat";
     private final String help_text = "Luxand Face Recognition\n\nJust tap any detected face and name it. The app will recognize this face further. For best results, hold the device at arm's length. You may slowly rotate the head for the app to memorize you at multiple views. The app can memorize several persons. If a face is not recognized, tap and name it again.\n\nThe SDK is available for mobile developers: www.luxand.com/facesdk";
 
@@ -57,6 +61,16 @@ public class MainActivity extends Activity implements OnClickListener {
                     }
                 })
                 .show();
+    }
+    public void nextscreen(String name){
+        try {
+            if (name.equals("muthu")) {
+                ok="ok";
+                Log.i("ok.................",ok);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void showMessage(String message) {
@@ -132,7 +146,12 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.helpButton) {
-            showMessage(help_text);
+            if (ok == "ok"){
+                startActivity(new Intent(MainActivity.this,MainScreen.class));
+            }else{
+                showMessage(help_text);
+            }
+
         } else if (view.getId() == R.id.clearButton) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure to clear the memory?" )
@@ -365,6 +384,7 @@ class ProcessImageAndDrawResults extends View {
                 if (names[0] != null && names[0].length() > 0) {
                     canvas.drawText(names[0], (mFacePositions[i].x1+mFacePositions[i].x2)/2, mFacePositions[i].y2+shift, mPaintBlue);
                     named = true;
+                    new MainActivity().nextscreen(names[0]);
                 }
             }
             if (!named) {
