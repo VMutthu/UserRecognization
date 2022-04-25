@@ -14,8 +14,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.luxand.FSDK;
 import com.luxand.FSDK.TFacePosition;
 import com.luxand.FSDK.TFaces;
 
@@ -24,14 +27,17 @@ public class FaceImageView extends ImageView {
 	private Paint painter;
     public TFaces detectedFaces;
     public int faceImageWidthOrig;
+	long mTouchedID;
+	String templatePath;
     
 	public void Init() {
 		faceImageWidthOrig = 0;
 		detectedFaces = new TFaces();
 		painter = new Paint();
-        painter.setColor(Color.BLUE);
+        painter.setColor(Color.GREEN);
         painter.setStrokeWidth(1);
         painter.setStyle(Paint.Style.STROKE);
+
 	}
 	
 	public FaceImageView(Context context, AttributeSet attrs, int defStyle) {
@@ -46,6 +52,7 @@ public class FaceImageView extends ImageView {
 		super(context);
 		Init();
 	}
+
 	
 	//display detected faces
 	public void onDraw(Canvas canvas) {
@@ -61,9 +68,12 @@ public class FaceImageView extends ImageView {
 				int xc = (int) (detectedFace.xc * ratio);
 				int yc = (int) (detectedFace.yc * ratio);
 				int w = (int) (detectedFace.w * ratio);
+				mTouchedID = 1;
+				String name = "muthu";
 
 				//draw detected face
 				canvas.drawRect(xc - w / 2, yc - w / 2, xc + w / 2, yc + w / 2, painter);
+
 			}
         }
     }
