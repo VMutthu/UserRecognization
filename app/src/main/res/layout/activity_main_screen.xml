@@ -10,20 +10,26 @@
         android:id="@+id/adduser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="78dp"
         android:text="Add user"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/validateuser"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="55dp"
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/validateuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
+        android:layout_marginEnd="64dp"
         android:text="Vaildate user"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adduser"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="222dp" />
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

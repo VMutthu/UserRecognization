@@ -20,7 +20,7 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(MainScreen.this,MainActivity.class));
+                startActivity(new Intent(MainScreen.this,AddUser.class));
             }
         });
         validate_user.setOnClickListener(new View.OnClickListener() {
