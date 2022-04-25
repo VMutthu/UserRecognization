@@ -255,14 +255,14 @@ class ProcessImageAndDrawResults extends View {
         mPaintGreen.setTextAlign(Align.CENTER);
         mPaintBlue = new Paint();
         mPaintBlue.setStyle(Paint.Style.FILL);
-        mPaintBlue.setColor(Color.BLUE);
+        mPaintBlue.setColor(Color.GREEN);
         mPaintBlue.setTextSize(18 * MainActivity.sDensity);
         mPaintBlue.setTextAlign(Align.CENTER);
 
         mPaintBlueTransparent = new Paint();
         mPaintBlueTransparent.setStyle(Paint.Style.STROKE);
-        mPaintBlueTransparent.setStrokeWidth(2);
-        mPaintBlueTransparent.setColor(Color.BLUE);
+        mPaintBlueTransparent.setStrokeWidth(4);
+        mPaintBlueTransparent.setColor(Color.WHITE);
         mPaintBlueTransparent.setTextSize(25);
 
         //mBitmap = null;
